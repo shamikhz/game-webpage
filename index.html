@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-iJnZB/lNLjGK7ETPhWg7/fNkd8k4ou6V5ZKZfWczcYfUP+5FY9tc+zMk3PI1A9IWSNM/2rLt3WgdfK9OyJlb1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <title>Game Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: fit-content;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: black;
+            overflow: hidden;
+            padding: 10px 20px;
+            z-index: 1;
+            position: fixed;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            margin-left: auto;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .menu-icon {
+            width: 25px;
+            cursor: pointer;
+            display: none;
+        }
+
+        nav {
+            flex: 1;
+            text-align: right;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            float: right;
+        }
+
+        nav ul li {
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: aliceblue;
+            font-size: 17px;
+        }
+
+        @media only screen and (max-width: 700px) {
+            nav ul {
+                flex-direction: column;
+                background-color: rgba(0, 0, 0, 0.6);
+                position: absolute;
+                right: 30px;
+                z-index: 2;
+                display: none;
+            }
+
+            nav ul li {
+                margin: 10px 10px;
+            }
+
+            nav ul li a {
+                color: aliceblue;
+            }
+
+            .menu-icon {
+                display: block;
+                margin-right: 20px;
+            }
+        }
+
+        .video-section {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text {
+            color: #4cd71d;
+            font-size: 35px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            position: absolute;
+            bottom: 50%;
+            left: 30%;
+            transform: translateX(-50%);
+            width: 40%;
+        }
+
+        .yellow {
+            color: rgb(214, 139, 53);
+        }
+
+        .button {
+            color: #4cd71d;
+            font-size: 30px;
+            position: absolute;
+            bottom: 30%;
+            cursor: pointer;
+            left: 30%;
+            padding: 8px;
+            border: 1px solid aqua;
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+
+        @media only screen and (max-width: 800px) {
+            .text {
+                font-size: 30px;
+            }
+
+            .button {
+                font-size: 25px;
+            }
+        }
+
+        .about {
+            height: 450px;
+            background: url('pexels-element-digital-1293261.jpg');
+            display: flex;
+            background-attachment: fixed; /* Parallax effect */
+            color: white;
+        }
+
+        .first p {
+            font-size: 50px;
+            width: 100%;
+            margin: 60px;
+        }
+
+        .second p {
+            font-size: 25px;
+            margin: 80px;
+
+        }
+
+        .purchase {
+            height: 400px;
+            background: url('pexels-tima-miroshnichenko-7046723.jpg');
+            display: flex;
+            margin-top: 0;
+            color: white;
+
+        }
+
+        .one {
+            width: 50%;
+            font-size: 24px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        button {
+            background-color: orange;
+            width: 100%;
+            color: white;
+            padding: 15px;
+            margin: 10px 0px;
+            border: none;
+            cursor: pointer;
+        }
+
+        form {
+            margin: 80px;
+            margin-left: 40px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px 20px;
+            background-color: aqua;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            opacity: 0.7;
+        }
+
+        .container {
+            padding: 25px;
+        }
+
+        .two {
+            height: 250px;
+            width: 30%;
+            background-color: rgba(0, 0, 0, 0.6);
+            margin-top: 80px;
+            margin-right: 40px;
+        }
+
+        .two p {
+            font-size: 25px;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        hr {
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            height: 2px;
+            background-color: aqua;
+        }
+
+        @media only screen and (max-width: 900px) {
+            .first p {
+                width: 80%;
+            }
+
+            .second p {
+                margin: 40px;
+                font-size: 20px;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .first p {
+                width: 80%;
+            }
+
+            .second p {
+                margin: 40px;
+                font-size: 15px;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .first p {
+                width: 80%;
+            }
+
+            .second p {
+                margin: 40px;
+                font-size: 8px;
+            }
+        }
+
+        .community {
+            display: flex;
+            background: url('pexels-francesco-ungaro-1670977.jpg');
+        }
+
+        .comm {
+            width: 100%;
+            height: 300px;
+            width: 50%;
+            margin-top: 50px;
+            text-align: right;
+            font-size: 24px;
+        }
+
+        .join {
+            background-color: #000;
+            width: 25%;
+            margin-right: 20%;
+        }
+
+        .footer {
+            height: 400px;
+            background-color: #262525;
+            color: white;
+        }
+
+        .last {
+            display: flex;
+            height: 190px;
+            padding: 50px;
+
+        }
+
+        .skate {
+            width: 50%;
+            margin-left: 20%;
+            font-size: 24px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .skate ul {
+            font-size: medium;
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .communication {
+            float: right;
+            margin-top: 20px;
+        }
+
+        .communication i {
+            margin-left: 10px;
+            font-size: 24px;
+            color: white;
+        }
+        .slast{
+        width: 80%;
+        margin-left: 22%;
+        margin-top: 30px;
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menuList');
+            menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav">
+            <img src="pexels-markus-winkler-4124720-removebg-preview.png" class="logo">
+            <input class="search-bar" placeholder="Search...">
+            <nav>
+                <ul id="menuList">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Media</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Purchase</a></li>
+                    <li><a href="#">Social Media</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <img src="bar.png" class="menu-icon" onclick="toggleMenu()">
+        </div>
+    </nav>
+    <section class="video-section">
+        <video autoplay loop muted preload="auto">
+            <source src="Riders Republic_ Cinematic Premiere _ Ubisoft Forward 2020 _ Ubisoft [NA].mp4"
+                type="video/mp4">
+        </video>
+        <div class="text">Built by developers. For developers. With fair terms for all. Let's build incredible things
+            together.</div>
+        <div class="button">Learn More About Us</div>
+    </section>
+    <section class="about">
+        <div class="first">
+            <p>About Skate</p>
+        </div>
+        <div class="second">
+            <p> Introducing Skater Republic, the thrilling upcoming arcade game that puts you right in the heart of a
+                dynamic skateboarding adventure! Explore <span class="yellow">expansive skateparks, bustling
+                    cityscapes,</span> and renowned
+                real-life locations for an immersive experience like no other.</br><br>
+                Featuring <span class="yellow">intuitive </span> controls, a
+                <span class="yellow">sophisticated trick system</span> , and a compelling progression framework, players
+                will find themselves
+                immersed in a world where every achievement feels <span class="yellow">truly gratifying.</span> Keep an
+                eye out as we work
+                diligently to bring this extraordinary gaming experience to life.
+            </p>
+        </div>
+    </section>
+    <section class="purchase">
+        <div class="one">
+            <form>
+                <input type="text" placeholder="INDIA">
+                <input type="text" placeholder="STEAM">
+                <input type="text" placeholder="DIGITAL EDITION">
+                <button type="submit">PURCHASE</button>
+            </form>
+
+        </div>
+        <div class="two">
+
+            <p>
+                DIGITAL EDITION
+            </p>
+            <hr>
+            <p>TONY HAWKS<sup>TM</sup>PRO SKATER<sup>TM</sup></p>
+        </div>
+    </section>
+    <section class="community">
+        <div class="comm">
+            <h2>Join The Community</h2></br>
+            <h4>The Official Skate.Discord Server</h4><br>
+            <button class="join">Join Us</button>
+        </div>
+        <div class="bg">
+            <img src="a-removebg-preview.png">
+        </div>
+    </section>
+    <div class="footer">
+        <div class="last">
+            <div class="skate">
+                <p>Skate</p><br>
+                <ul>
+                    <li>Home</li>
+                    <li>FAQ</li>
+                    <li>About</li>
+                </ul>
+            </div>
+            <div class="communication">
+                Join The Communication
+                <br><br>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-twitch"></i>
+                <i class="fab fa-discord"></i>
+            </div>
+        </div>
+        <hr>
+         <div class="slast">
+           <img src="soo.png">
+        </div>
+
+    </div>
+</body>
+
+</html>
